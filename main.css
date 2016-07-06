@@ -6,5 +6,9 @@
   margin-top: 200px;
 }
 .box {
-  border: 
+  border:
+}
+
+.pointer {
+  cursor: pointer;
 }
