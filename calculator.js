@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-  var test = $(".from7To*").children();
-
-  console.log(test);
+$(".row1").children().click(function(event) {
+  console.log("im working!");
+});
 
 });
