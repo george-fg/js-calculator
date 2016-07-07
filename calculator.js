@@ -7,36 +7,51 @@ $(document).ready(function() {
 
 });
 
+var combInput = "";
+
 function runFun(event) {
   var target = event.target.innerHTML;
   var numbers = getNumbers(target);
 
 
+
   switch (target) {
     case "AC":
+      combInput = "";
       return $("#displayText").val("0");
     case "CE":
-
-    case "&":
-
+      return;
+    case "%":
+      combInput += target;
+      return $("#displayText").val(combInput);
     case "/":
-    return calculate("/");
+      combInput += target;
+      return $("#displayText").val(combInput);
     case "*":
-    return calculate("*");
+      combInput += target;
+      return $("#displayText").val(combInput);
     case "+":
-    return calculate("+");
+       combInput += target;
+      return $("#displayText").val(combInput);
     case "-":
-    return calculate("-");
+      combInput += target;
+      return $("#displayText").val(combInput);
+    case "=":
+      return calculate(combInput);
+    case ".":
+      combInput += target;
+      return $("#displayText").val(combInput);
   }
 
   if (!isNaN(numbers)) {
-    $("#displayText").val(numbers);
-    calculate(numbers);
+    combInput += target;
+    $("#displayText").val(combInput);
   }
 }
 
-function calculate(op, num) {
-  console.log(op, num);
+function calculate(eve) {
+  var result = eval(eve);
+  return $("#displayText").val(result);
 }
 
 function getNumbers(target) {
