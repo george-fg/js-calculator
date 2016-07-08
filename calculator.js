@@ -13,12 +13,10 @@ function runFun(event) {
   var target = event.target.innerHTML;
   var numbers = getNumbers(target);
 
-
-
   switch (target) {
     case "AC":
       combInput = "";
-      return $("#displayText").val("0");
+      return clearText();
     case "CE":
       return;
     case "%":
@@ -37,6 +35,7 @@ function runFun(event) {
       combInput += target;
       return $("#displayText").val(combInput);
     case "=":
+      if(!isValid(combInput)) return clearText();
       return calculate(combInput);
     case ".":
       combInput += target;
@@ -47,6 +46,17 @@ function runFun(event) {
     combInput += target;
     $("#displayText").val(combInput);
   }
+}
+
+/*This function checks for a valid operation. First, it has to start with a number, follows by an operator, and lastly a number*/
+function isValid(input) {
+  var op = /^(\d+[\+\-\*\/%]{1})+\d+$/gm;
+  return op.test(input) ;
+}
+
+function clearText(){
+  combInput = "";
+  $("#displayText").val("0");
 }
 
 function calculate(eve) {
