@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-  $(".row1").children().click(runFun);
-  $(".row2").children().click(runFun);
-  $(".row3").children().click(runFun);
-  $(".row4").children().click(runFun);
+  $(".rows").children().click(runFun);
 
 });
 
